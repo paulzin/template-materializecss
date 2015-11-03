@@ -1,126 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>Image loading stats</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1.1', {packages: ['line']});
+    google.setOnLoadCallback(drawChart);
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Number of experiments');
+      data.addColumn('number', 'Tiny');
+      data.addColumn('number', 'Small');
+      data.addColumn('number', 'Middle');
+      data.addColumn('number', 'Large');
+      data.addColumn('number', 'Extralarge');
+      data.addColumn('number', 'Original');
+
+      data.addRows([
+			[1, 4.066673, 4.456783, 6.182148, 6.336155, 6.88905, 6.52016],
+			[2, 4.07493, 5.830362, 5.960509, 6.474159, 6.763776, 6.469702],
+			[3, 4.098128, 4.026826, 6.007177, 6.329019, 6.567784, 6.669527],
+			[4, 4.118951, 4.404352, 6.076999, 6.307826, 7.157661, 6.596941],
+			[5, 4.041236, 4.532425, 5.749043, 6.468875, 6.842561, 6.707706],
+			[6, 3.900234, 4.199761, 5.82235, 6.278368, 6.579328, 7.673788],
+			[7, 4.215703, 4.736491, 5.833614, 6.176219, 7.026497, 6.436158],
+			[8, 4.47031, 4.308947, 6.019079, 6.398563, 6.576201, 7.834297],
+			[9, 4.198367, 4.387717, 6.140646, 6.288056, 15.78519, 6.703402],
+			[10, 4.182574, 4.531618, 8.1021, 6.284635, 6.734172, 32.447853],
+			[11, 4.305139, 4.393385, 5.731486, 7.232416, 6.542758, 7.714267],
+			[12, 4.351849, 4.412558, 6.093947, 6.218532, 7.109666, 6.456467],
+			[13, 4.454934, 4.69045, 5.909254, 6.444751, 7.582963, 11.461525],
+			[14, 4.08617, 4.310998, 5.785096, 6.228891, 6.940521, 6.336465],
+			[15, 5.007973, 4.675518, 5.850326, 6.276681, 6.841775, 6.43412],
+			[16, 4.282848, 4.652752, 6.019333, 6.286509, 6.606967, 6.442249],
+			[17, 4.273538, 4.645442, 5.953164, 6.825208, 7.28376, 6.357157],
+			[18, 4.108645, 4.556072, 5.892502, 6.374639, 6.84073, 6.896919],
+			[19, 4.050387, 4.427458, 5.820645, 6.269417, 6.671043, 6.360805],
+			[20, 4.073362, 4.416796, 5.795756, 6.310817, 7.017293, 6.3377],
+			[21, 4.07162, 4.358712, 5.982727, 6.258846, 7.002079, 6.278311],
+			[22, 4.19298, 5.031657, 6.401568, 6.539447, 6.88978, 6.364675],
+			[23, 4.398547, 4.357187, 5.948239, 6.184111, 7.407758, 6.702586],
+			[24, 4.235231, 4.759165, 5.966769, 6.571894, 6.852579, 6.511479],
+			[25, 4.058094, 4.569146, 6.200916, 6.321558, 6.601752, 6.854954],
+			[26, 3.917941, 4.543823, 6.431857, 6.144158, 6.908915, 6.389119],
+			[27, 3.992576, 4.569714, 6.205467, 6.225006, 6.894721, 6.760302],
+			[28, 4.271684, 4.284991, 5.99577, 6.536372, 6.804569, 6.436094],
+			[29, 4.400207, 4.378494, 5.899071, 6.574831, 6.667223, 6.669512],
+			[30, 4.024069, 4.366402, 6.286979, 6.239753, 6.882606, 6.519838],
+			[31, 4.219782, 4.462439, 6.019272, 6.712295, 6.653345, 6.573641],
+			[32, 4.137898, 4.447607, 5.847475, 6.465461, 7.015747, 7.222848],
+			[33, 4.168546, 4.864002, 5.923954, 6.363386, 6.819938, 6.396142],
+			[34, 4.126644, 4.652451, 6.593563, 6.954824, 7.087073, 6.364633],
+			[35, 4.117979, 4.41895, 6.063982, 13.295338, 8.081913, 6.315279],
+			[36, 4.031895, 4.33484, 6.099651, 6.103409, 6.875461, 6.375259],
+			[37, 3.839332, 4.29229, 5.888284, 6.252884, 8.103844, 6.356929],
+			[38, 4.097594, 4.998069, 5.94441, 7.218556, 6.74873, 6.569338],
+			[39, 4.076396, 4.301102, 5.944858, 6.400579, 6.889669, 6.563083],
+			[40, 3.953599, 4.314398, 5.97155, 6.24086, 7.053154, 6.306105],
+			[41, 3.951147, 4.352699, 5.84297, 6.294915, 6.545268, 6.377092],
+			[42, 4.487672, 4.589723, 6.078404, 6.253543, 6.994, 6.547202],
+			[43, 4.096058, 4.461146, 6.011347, 6.611302, 7.405544, 6.716096],
+			[44, 4.180016, 4.392555, 6.105925, 6.26586, 6.586776, 6.333507],
+			[45, 4.363502, 4.517873, 6.043446, 6.301127, 6.485032, 9.390109],
+			[46, 4.497738, 4.448868, 6.031319, 5.911647, 9.261539, 6.722485],
+			[47, 4.080892, 4.402444, 7.087588, 6.736467, 6.609735, 6.21859],
+			[48, 4.153225, 4.368057, 5.863165, 6.174524, 6.856378, 6.182894],
+			[49, 4.00535, 4.297547, 5.816773, 6.192948, 12.199741, 6.469527],
+			[50, 4.292579, 4.417417, 6.049324, 6.263875, 6.59988, 9.473278],
+			[51, 3.940103, 4.551471, 5.872987, 6.359699, 7.018094, 6.576326],
+			[52, 3.982959, 4.472979, 6.054683, 6.705964, 6.712304, 5.947904],
+			[53, 3.998905, 4.372443, 6.05152, 6.217709, 6.778639, 6.73719],
+			[54, 3.990753, 4.256001, 5.465296, 5.948655, 14.530394, 7.374564],
+			[55, 4.27163, 4.482023, 5.943775, 6.37413, 7.128276, 6.711338],
+			[56, 4.366597, 3.987977, 6.04768, 6.501611, 6.829911, 6.504867],
+			[57, 3.913671, 4.24826, 8.474274, 6.225918, 6.793365, 6.347221],
+			[58, 3.976511, 4.739921, 5.709078, 6.518085, 6.840198, 6.366361],
+			[59, 4.506011, 4.278857, 5.744954, 6.311759, 6.719896, 6.770656],
+			[60, 4.266178, 4.545781, 5.531515, 7.418386, 6.882635, 6.303414],
+			[61, 3.691977, 4.457228, 6.22878, 6.376565, 6.843183, 6.12489],
+			[62, 4.270637, 4.589052, 5.982751, 9.541875, 6.146046, 6.772399],
+			[63, 4.093249, 3.974194, 6.031801, 6.753314, 11.154505, 6.461761],
+			[64, 3.980721, 4.619038, 5.989798, 6.285099, 6.80608, 6.448664],
+			[65, 4.05486, 4.873188, 6.26416, 6.431187, 6.654659, 6.385427],
+			[66, 9.078092, 4.817438, 6.335455, 6.611116, 6.723629, 7.557452],
+			[67, 4.017685, 4.660317, 6.075884, 6.49865, 6.935399, 8.152799],
+			[68, 4.24685, 4.516081, 5.976254, 6.581129, 6.836631, 7.280571],
+			[69, 4.134943, 4.075333, 6.187273, 6.390883, 6.863545, 6.832079],
+			[70, 4.123978, 4.991974, 5.774368, 6.666059, 6.917558, 6.490001],
+			[71, 3.89581, 4.488275, 5.874762, 6.377539, 6.854495, 6.848689],
+			[72, 4.172279, 4.707, 6.323025, 6.305495, 6.804313, 6.469414],
+			[73, 4.615944, 4.354657, 5.919491, 6.08963, 7.070317, 7.657564],
+			[74, 4.066725, 4.662333, 6.024712, 6.736895, 7.310447, 8.797141],
+			[75, 5.032189, 4.696445, 9.693522, 6.565165, 7.695983, 6.63483],
+			[76, 4.09564, 4.5936, 5.973893, 6.38436, 6.834012, 6.388765],
+			[77, 4.101312, 5.126377, 7.334145, 6.5613, 6.975972, 7.449214],
+			[78, 4.191471, 4.492859, 6.121517, 6.867512, 6.668603, 6.490189],
+			[79, 4.283081, 4.488817, 6.031288, 6.290169, 6.680943, 6.498247],
+			[80, 4.115731, 4.941094, 6.363711, 6.57063, 12.02302, 6.807183],
+			[81, 4.185938, 4.546091, 5.943938, 10.052263, 8.081053, 6.763402],
+			[82, 4.266004, 4.942399, 5.911615, 8.873403, 7.078568, 10.303236],
+			[83, 4.439421, 4.922821, 5.967653, 6.438899, 6.880235, 6.418218],
+			[84, 3.836023, 4.068878, 5.655026, 9.318489, 6.872367, 6.886908],
+			[85, 4.001666, 4.621725, 6.491407, 6.680496, 7.278251, 7.042832],
+			[86, 4.582907, 4.497297, 6.218597, 7.235381, 7.389339, 7.345021],
+			[87, 4.290449, 4.423232, 5.962993, 6.388782, 6.867555, 6.777075],
+			[88, 4.245154, 4.47279, 6.120089, 6.652605, 6.879169, 7.191253],
+			[89, 9.335492, 4.817961, 6.218233, 6.488648, 7.221693, 6.491361],
+			[90, 4.110577, 4.454979, 6.203825, 6.415415, 6.866925, 6.545283],
+			[91, 4.505615, 4.710906, 5.817671, 10.972194, 9.32923, 6.711494],
+			[92, 4.01195, 4.817599, 5.833997, 8.103724, 6.756321, 6.453357],
+			[93, 4.159751, 4.435827, 8.692345, 6.736571, 6.746412, 6.456748],
+			[94, 4.283598, 4.932785, 5.951186, 6.456529, 7.219536, 6.382454],
+			[95, 4.317062, 3.974285, 5.960763, 6.338537, 6.918256, 10.543236],
+			[96, 4.519715, 4.523652, 6.399484, 6.323788, 8.804604, 6.592719],
+			[97, 5.55517, 4.540013, 5.840605, 7.302244, 9.005828, 6.707345],
+			[98, 4.089832, 4.409083, 6.300331, 6.516163, 6.705929, 6.674275],
+			[99, 4.116499, 4.569187, 5.927284, 6.396812, 6.832055, 6.621158],
+			[100, 4.07478, 4.420935, 5.627815, 6.523122, 6.883328, 6.428137]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Speed of image loading',
+          subtitle: 'in seconds'
+        },
+        width: 1800,
+        height: 800,
+
+	colors: ['#00C853', '#2979FF', '#AA00FF', '#FF1744', '#FBC02D', '#000000']
+      };
+
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+      chart.draw(data, options);
+    }
+  </script>
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
+  <div id="linechart_material" style="padding: 30px"></div>
+<br/>
+<br/>
+<div style="width: 50%; margin: 0 auto; padding-bottom: 30px;">
+<h3>Statistic</h3>
+<br/>
+      <table>
+        <thead>
+          <tr>
+              <th data-field="id">Image size</th>
+              <th data-field="name">Mean</th>
+              <th data-field="price">Variance</th>
+          </tr>
+        </thead>
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">Starter Template</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-      </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div>
-      <br><br>
-
-    </div>
-  </div>
-
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br><br>
-
-    <div class="section">
-
-    </div>
-  </div>
-
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
-
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/init.js"></script>
-
-  </body>
+        <tbody>
+          <tr>
+            <td>Tiny</td>
+            <td>4.29206839</td>
+            <td>0.55641918599</td>
+          </tr>
+          <tr>
+            <td>Small</td>
+            <td>4.52313937</td>
+            <td>0.07039085169</td>
+          </tr>
+          <tr>
+            <td>Middle</td>
+            <td>6.13739006</td>
+            <td>0.36273070844</td>
+          </tr>
+          <tr>
+            <td>Large</td>
+            <td>6.70100065</td>
+            <td>1.07407777548</td>
+          </tr>
+          <tr>
+            <td>Extralarge</td>
+            <td style="color: #FF1744;">7.31794151</td>
+            <td>2.21247136005</td>
+          </tr>
+          <tr>
+            <td>Original</td>
+            <td>7.11340747</td>
+            <td style="color: #FF1744;">7.30502665406</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+</body>
 </html>
